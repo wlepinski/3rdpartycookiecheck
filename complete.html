@@ -1,12 +1,10 @@
 <body>
 	<script>
 	if (window.parent) {
-		var messagePayload = {
+		window.parent.postMessage({
 			source: '3rdpartycookiecheck',
 			enabled: (/thirdparty=yes/.test(document.cookie)) ? true : false,
-		};
-	
-		window.parent.postMessage(JSON.stringify(messagePayload), '*');
+		}, '*');
 	
 		document.cookie = 'thirdparty=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 	}
